@@ -13,7 +13,7 @@ namespace CapstoneShoppingList.Models
         [Display(Name = "Product ID")]
         public int? ProductId { get; set; }
         
-        [Display(Name = "Item Quantity")]
+        [Display(Name = "Quantity")]
         [Range(0,1000)]
         public int? Quantity { get; set; }
         
@@ -23,13 +23,15 @@ namespace CapstoneShoppingList.Models
         
         [Display(Name = "Product")]
         public virtual Products Product { get; set; }
+        
+        [Display(Name="Total")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal? ItemTotalCost
+        {
 
-        //public decimal? ItemTotalCost()
-        //{
-
-        //    return Quantity * Product.ProductPrice;
-        //}
+            get { return Quantity* Product.ProductPrice; }
+        }
         //ICalculate Calculations.Calculate(Quantity, Total);
     }
-    
+
 }
